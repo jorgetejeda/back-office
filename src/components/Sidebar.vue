@@ -4,7 +4,7 @@
             <img :src="logoURL" alt="Vue" />
         </div>
 
-        <h3>Menu</h3>
+        <p class="bold uppercase">Menu</p>
         <div class="menu">
             <router-link to="/" class="button">
                 <span class="material-icons">home</span>
@@ -49,8 +49,8 @@ aside {
     display: flex;
     flex-direction: column;
 
-    background-color: var(--dark);
-    color: var(--light);
+    background-color: var(--primary-color);
+    color: var(--white);
 
     width: calc(2rem + 32px);
     overflow: hidden;
@@ -71,44 +71,10 @@ aside {
         }
     }
 
-    .menu-toggle-wrap {
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 1rem;
-
-        position: relative;
-        top: 0;
-        transition: 0.2s ease-in-out;
-
-        .menu-toggle {
-            transition: 0.2s ease-in-out;
-
-            .material-icons {
-                font-size: 2rem;
-                color: var(--light);
-                transition: 0.2s ease-out;
-            }
-
-            &:hover {
-                .material-icons {
-                    color: var(--primary);
-                    transform: translateX(0.5rem);
-                }
-            }
-        }
-    }
-
-    h3,
+    p,
     .button .text {
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
-    }
-
-    h3 {
-        color: var(--grey);
-        font-size: 0.875rem;
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
     }
 
     .menu {
@@ -124,31 +90,26 @@ aside {
 
             .material-icons {
                 font-size: 2rem;
-                color: var(--light);
+                color: var(--white);
                 transition: 0.2s ease-in-out;
             }
 
             .text {
-                color: var(--light);
+                color: var(--white);
                 transition: 0.2s ease-in-out;
             }
 
             &:hover {
-                background-color: var(--dark-alt);
-
-                .material-icons,
-                .text {
-                    color: var(--primary);
-                }
+                background-color: var(--primary-color-light);
             }
 
             &.router-link-exact-active {
-                background-color: var(--dark-alt);
-                border-right: 5px solid var(--primary);
+                background-color: var(--primary-color-light);
+                border-right: 5px solid red;
 
                 .material-icons,
                 .text {
-                    color: var(--primary);
+                    color: var(--white);
                 }
             }
         }
@@ -160,7 +121,6 @@ aside {
 
         p {
             font-size: 0.875rem;
-            color: var(--grey);
         }
     }
 

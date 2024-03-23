@@ -23,12 +23,51 @@ const handleSidebar = (isExpanded: boolean) => {
 
 <style lang="scss">
 :root {
-  --primary: #4ade80;
-  --primary-alt: #22c55e;
-  --grey: #64748b;
-  --dark: #1e293b;
-  --dark-alt: #334155;
-  --light: #f1f5f9;
+  // Common
+  --white: #fff;
+  --black: #000; 
+  --surface: #EDF3F8;
+
+  --body-color: #F5F5F5;
+
+  // Primary Colors
+  --primary-color: #002D72;
+  --primary-color-dark: #001F4C;
+  --primary-color-light: #004D8E;
+
+  // Indicators colors
+  --success-color: #41c19f;
+  --warning-color: #ffc559;
+  --danger-color: #ef2b49;
+
+  // Border Colors
+  --border-color: #c4cdd5;
+  --border-disabled-color: #d8e1e9;
+  
+  // Text Colors
+  --text-color: #282828;
+  --text-header-color: #0b1941;
+  --text-info-color: #53565A;
+  --text-value-color: #727272;
+
+  // Text Disabled
+  --text-disabled-color: #e5e6e7;
+  --text-value-disabled-color: #c3c5c6;
+
+  // Font Family
+  --font-family: 'Lato', sans-serif;
+
+  // Text Header Size
+  --text-header-size: 26pt;
+  --text-title-size: 24pt;
+  --text-subtitle-size: 18pt;
+ 
+  // Text Body Size
+  --text-body-size: 1rem;
+  --text-small-size: 0.875rem;
+  --text-caption-size: 0.75rem;
+
+  // sidebar
   --sidebar-width: 300px;
 }
 
@@ -36,11 +75,27 @@ const handleSidebar = (isExpanded: boolean) => {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Fira sans', sans-serif;
 }
 
 body {
-  background: var(--light);
+  background: var(--body-color);
+  font-family: var(--font-family);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+div.border {
+  border: 1px solid var(--border-color);
 }
 
 button {
