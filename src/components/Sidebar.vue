@@ -1,13 +1,7 @@
 <template>
-    <aside :class="`${is_expanded ? 'is-expanded' : ''}`">
+    <aside :class="`${!props.is_expanded ? 'is-expanded' : ''}`">
         <div class="logo">
             <img :src="logoURL" alt="Vue" />
-        </div>
-
-        <div class="menu-toggle-wrap">
-            <button class="menu-toggle" @click="ToggleMenu">
-                <span class="material-icons">keyboard_double_arrow_right</span>
-            </button>
         </div>
 
         <h3>Menu</h3>
@@ -42,22 +36,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-// import logoURL from '../assets/logo.png'
+import { defineProps } from 'vue'
 
-const is_expanded = ref(localStorage.getItem("is_expanded") === "true")
 
-const ToggleMenu = () => {
-    is_expanded.value = !is_expanded.value
-    localStorage.setItem("is_expanded", is_expanded.value)
-}
+const props = defineProps({
+    is_expanded: Boolean,
+})
 </script>
 
 <style lang="scss" scoped>
 aside {
     display: flex;
     flex-direction: column;
-    border-radius: 12px;
 
     background-color: var(--dark);
     color: var(--light);

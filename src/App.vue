@@ -1,12 +1,23 @@
 <template>
   <div class="app">
-    <Sidebar />
-    <router-view />
+    <Sidebar :is_expanded="is_expanded" />
+    <main>
+      <Navbar @toogleSidebar="handleSidebar" />
+      <router-view />
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import Sidebar from './components/Sidebar.vue'
+import { ref } from 'vue';
+import Navbar from '@/components/Navbar.vue';
+import Sidebar from '@/components/Sidebar.vue'
+
+const is_expanded = ref(false);
+
+const handleSidebar = (isExpanded: boolean) => {
+  is_expanded.value = isExpanded;
+};
 
 </script>
 
@@ -23,7 +34,7 @@ import Sidebar from './components/Sidebar.vue'
 
 * {
   margin: 0;
-  padding: 0.15rem;
+  padding: 0;
   box-sizing: border-box;
   font-family: 'Fira sans', sans-serif;
 }
@@ -45,7 +56,7 @@ button {
 
   main {
     flex: 1 1 0;
-    padding: 2rem;
+    padding: 1rem 1.75rem;
 
     @media (max-width: 1024px) {
       padding-left: 6rem;
