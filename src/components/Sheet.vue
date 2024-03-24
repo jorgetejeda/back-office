@@ -8,8 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
 // @components
 import Header from '@/components/Header.vue';
 

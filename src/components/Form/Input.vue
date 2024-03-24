@@ -48,54 +48,6 @@ const handleFocus = (event: FocusEvent) => {
 </script>
 
 <style lang="scss" scoped>
-.input {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    font-family: var(--font-family);
-
-    .label {
-        font-size: 1rem;
-        color: var(--text-info-color);
-        margin-bottom: 0.5rem;
-    }
-
-    .input-group {
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid var(--border-color);
-        transition: 0.2s ease-out;
-
-        .input-field {
-            padding: 0.5rem 0;
-            border: none;
-            font-size: 1rem;
-            flex: 1;
-            outline: none;
-            background-color: transparent;
-            font-weight: 400;
-            font-family: var(--font-family);
-
-            &::placeholder {
-                color: lightgray;
-            }
-
-            &:focus {
-                border-color: var(--primary-color);
-            }
-        }
-
-        .inner-icon {
-            color: var(--text-value-color);
-            transition: 0.2s ease-out;
-            margin-left: 0.5rem;
-        }
-    }
-
-    .error-message {
-        color: var(--danger-color);
-        font-size: 0.8rem;
-        padding-top: 8px;
-    }
-}
+@import 'src/assets/styles/index';
+@import 'src/assets/styles/inputs';
 </style>
