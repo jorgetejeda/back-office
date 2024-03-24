@@ -1,6 +1,6 @@
 <template>
-     <p v-if="variant === 'body'">{{ text }}</p>
-    <small v-else :class="variant">{{ text }}</small>
+  <p v-if="variant === 'body'">{{ text }}</p>
+  <small v-else :class="variant">{{ text }}</small>
 </template>
 
 <script setup lang="ts">
@@ -15,19 +15,24 @@ const { text, variant } = defineProps<Text>();
 </script>
 
 <style lang="scss">
+$text-body-size: var(--text-body-size);
+$text-small-size: var(--text-small-size);
+$text-caption-size: var(--text-caption-size);
+$text-info-color: var(--text-info-color);
+
 p {
-  font-size: var(--text-body-size);
-  color: var(--text-info-color);
+  font-size: $text-body-size;
+  color: $text-info-color;
 }
 
 small.small {
-  font-size: var(--text-small-size);
-  color: var(--text-info-color);
+  font-size: $text-small-size;
+  color: $text-info-color;
 }
 
 small.caption {
-  font-size: var(--text-caption-size);
-  color: var(--text-info-color);
+  font-size: $text-caption-size;
+  color: $text-info-color;
   font-weight: 300;
 }
 </style>

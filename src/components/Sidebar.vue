@@ -7,19 +7,19 @@
         <p class="bold uppercase">Menu</p>
         <div class="menu">
             <router-link to="/" class="button">
-                <span class="material-icons">home</span>
+                <Icon icon="home" />
                 <span class="text">Home</span>
             </router-link>
             <router-link to="/about" class="button">
-                <span class="material-icons">description</span>
+                <Icon icon="description" />
                 <span class="text">About</span>
             </router-link>
             <router-link to="/team" class="button">
-                <span class="material-icons">group</span>
+                <Icon icon="group" />
                 <span class="text">Team</span>
             </router-link>
             <router-link to="/contact" class="button">
-                <span class="material-icons">email</span>
+                <Icon icon="email" />
                 <span class="text">Contact</span>
             </router-link>
         </div>
@@ -36,8 +36,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-
+import Icon from './Icon.vue';
 
 const props = defineProps({
     is_expanded: Boolean,
@@ -45,12 +44,18 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
+$primary-color: var(--primary-color);
+$primary-color-dark: var(--primary-color-dark);
+$primary-color-light: var(--primary-color-light);
+$white: var(--white);
+$sidebar-width: var(--sidebar-width);
+
 aside {
     display: flex;
     flex-direction: column;
 
-    background-color: var(--primary-color);
-    color: var(--white);
+    background-color: $primary-color;
+    color: $white;
 
     width: calc(2rem + 32px);
     overflow: hidden;
@@ -89,27 +94,27 @@ aside {
             padding: 0.5rem 1rem;
 
             .material-icons {
-                font-size: 2rem;
-                color: var(--white);
+                color: $white;
                 transition: 0.2s ease-in-out;
             }
 
             .text {
-                color: var(--white);
+                color: $white;
                 transition: 0.2s ease-in-out;
             }
 
             &:hover {
-                background-color: var(--primary-color-light);
+                background-color: $primary-color-light;
             }
 
             &.router-link-exact-active {
-                background-color: var(--primary-color-light);
+                background-color: $primary-color-light;
                 border-right: 5px solid red;
+                border-radius: 0rem;
 
                 .material-icons,
                 .text {
-                    color: var(--white);
+                    color: $white;
                 }
             }
         }
@@ -125,7 +130,11 @@ aside {
     }
 
     &.is-expanded {
-        width: var(--sidebar-width);
+        width: $sidebar-width;
+
+        .menu {
+            padding: 0 1rem;
+        }
 
         .menu-toggle-wrap {
             top: -3rem;

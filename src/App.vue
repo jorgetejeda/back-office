@@ -1,34 +1,19 @@
 <template>
   <div class="app">
-    <Sidebar :is_expanded="is_expanded" />
-    <main>
-      <Navbar @toogleSidebar="handleSidebar" />
-      <router-view />
-    </main>
+    <router-view />
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
-import Navbar from '@/components/Navbar.vue';
-import Sidebar from '@/components/Sidebar.vue'
-
-const is_expanded = ref(false);
-
-const handleSidebar = (isExpanded: boolean) => {
-  is_expanded.value = isExpanded;
-};
-
-</script>
-
 <style lang="scss">
-:root {
+@import './assets/styles/index';
+
+/* :root {
   // Common
   --white: #fff;
-  --black: #000; 
+  --black: #000;
   --surface: #EDF3F8;
 
-  --body-color: #F5F5F5;
+  --body-color: #f6f6f6;
 
   // Primary Colors
   --primary-color: #002D72;
@@ -43,7 +28,7 @@ const handleSidebar = (isExpanded: boolean) => {
   // Border Colors
   --border-color: #c4cdd5;
   --border-disabled-color: #d8e1e9;
-  
+
   // Text Colors
   --text-color: #282828;
   --text-header-color: #0b1941;
@@ -61,15 +46,18 @@ const handleSidebar = (isExpanded: boolean) => {
   --text-header-size: 26pt;
   --text-title-size: 24pt;
   --text-subtitle-size: 18pt;
- 
+
   // Text Body Size
   --text-body-size: 1rem;
   --text-small-size: 0.875rem;
   --text-caption-size: 0.75rem;
 
   // sidebar
-  --sidebar-width: 300px;
-}
+  --sidebar-width: 250px;
+
+  // border radius
+  --border-radius: 0.50rem;
+} */
 
 * {
   margin: 0;
@@ -78,24 +66,8 @@ const handleSidebar = (isExpanded: boolean) => {
 }
 
 body {
-  background: var(--body-color);
-  font-family: var(--font-family);
-}
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.bold {
-  font-weight: 700;
-}
-
-.flex-grow {
-  flex-grow: 1;
-}
-
-div.border {
-  border: 1px solid var(--border-color);
+  background: $body-color;
+  font-family: $font-family;
 }
 
 button {

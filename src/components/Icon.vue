@@ -13,9 +13,11 @@ const { icon } = defineProps<IconProps>();
 </script>
 
 <style lang="scss">
+$text-color: var(--text-color);
+
 .material-icons {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
+    color: $text-color;
+    transition: 0.2s ease-out;
 
     &.icon {
         padding: 0.5rem;

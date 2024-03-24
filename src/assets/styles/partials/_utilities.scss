@@ -1,0 +1,75 @@
+@for $i from 0 through 5 {
+  .mx-#{$i} {
+    margin-left: #{$i}rem;
+    margin-right: #{$i}rem;
+  }
+
+  .my-#{$i} {
+    margin-top: #{$i}rem;
+    margin-bottom: #{$i}rem;
+  }
+
+  .mt-#{$i} {
+    margin-top: #{$i}rem;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: #{$i}rem;
+  }
+
+  .px-#{$i} {
+    padding-left: #{$i}rem;
+    padding-right: #{$i}rem;
+  }
+
+  .py-#{$i} {
+    padding-top: #{$i}rem;
+    padding-bottom: #{$i}rem;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: $font-weight-bold;
+}
+
+.regular {
+  font-weight: $font-weight-regular;
+}
+
+.light {
+  font-weight: $font-weight-light;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.rounded {
+  border-radius: $border-radius;
+}
+
+div.border {
+  border: 1px solid;
+  border-color: $border-color;
+
+  &.bottom {
+    margin: 0.5rem 0rem;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-color: $border-color;
+  }
+}
+
+div.divider {
+  border-top: 1px solid $border-color;
+  margin: 2rem 0;
+}

@@ -1,67 +1,69 @@
 <template>
-
-    <button
-        class="btn"
-        :class="variant"
-        :disabled="disabled || loading"
-        @click="onClick"
-    >
-        <Icons v-if="variant === 'icon' && icon" :icon="icon"/>
+    <button :type="type" class="btn rounded" :class="variant" :disabled="disabled || loading" @click="onClick">
+        <Icon v-if="variant === 'icon' && icon" :icon="icon" />
         <template v-if="text">{{ text }}</template>
     </button>
 </template>
 <script setup lang="ts">
-import Icons from '@/components/Icons.vue';
+import Icon from '@/components/Icon.vue';
 
 interface ButtonProps {
     text?: string;
     disabled?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
     loading?: boolean;
     variant: 'outlined' | 'primary' | 'text' | 'icon';
     icon?: string;
+    type?: 'button' | 'submit' | 'reset';
 }
 
-// default values
-const { text, disabled, onClick, loading, variant } = withDefaults(defineProps<ButtonProps>(), {
-    disabled: false,
-    loading: false,
-    variant: 'primary',
-});
-
+const { text, disabled = false, onClick, loading = false, variant = "primary", type = "button" } = defineProps<ButtonProps>();
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import 'src/assets/styles/index';
+
 .btn {
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
     font-size: 1rem;
+    font-family: $font-family;
+    font-weight: 400;
+    height: 44px;
+    letter-spacing: 1.5px;
 
     &.outlined {
-        border: 1px solid var(--primary-color);
-        color: var(--primary-color);
+        border: 1px solid $primary-color;
+        color: $primary-color;
 
         &:hover {
-            background-color: var(--primary-color-dark);
-            border-color: var(--primary-color-dark);
-            color: white;
+            background-color: $primary-color-dark;
+            border-color: $primary-color-dark;
+            color: $white;
         }
     }
 
     &.primary {
-        background-color: var(--primary-color);
-        color: white;
+        background-color: $primary-color;
+        color: $white;
 
         &:hover {
-            background-color: var(--primary-color-dark);
+            background-color: $primary-color-dark;
         }
     }
 
-    &.text{
-        color: var(--primary-color);
+    &.text {
+        color: $primary-color;
 
         &:hover {
-            background-color: var(--primary-color-light);
+            background-color: $primary-color-light;
+        }
+    }
+
+    &.icon {
+        padding: 0.5rem;
+
+        &:hover {
+            color: $primary-color-light;
         }
     }
 }

@@ -1,48 +1,49 @@
 <template>
-    <header>
-      <component :is="headerMap[variant]">{{ title }}</component>
-    </header>
-  </template>
-  
-  <script setup lang="ts">
-  import { defineProps } from 'vue';
-  
-  interface HeaderProps {
-      title: string;
-      variant: 'header' | 'title' | 'subtitle';
-  }
-  
-  const { title, variant } = defineProps<HeaderProps>();
-  
-  const headerMap: Record<string, string> = {
-    header: 'h1',
-    title: 'h2',
-    subtitle: 'h3',
-  };
-  </script>
+  <header>
+    <component :is="headerMap[variant]" :class="variant">{{ title }}</component>
+  </header>
+</template>
 
-<style lang="scss">
-h1 {
-    margin-bottom: 0px !important;
+<script setup lang="ts">
+interface HeaderProps {
+  title: string;
+  variant: 'header' | 'title' | 'subtitle';
+}
+
+const { title, variant } = defineProps<HeaderProps>();
+
+const headerMap: Record<string, string> = {
+  header: 'h1',
+  title: 'h2',
+  subtitle: 'h3',
+};
+</script>
+
+<style lang="scss" scoped>
+@import 'src/assets/styles/index';
+
+h1,
+h2,
+h3 {
+  line-height: 1.3;
 }
 
 h1.header {
-    font-size: var(--text-header-size);
-    color: var(--header-color);
-    font-weight: 700;
-    text-transform: uppercase;
+  font-size: $text-header-size;
+  color: $text-header-color;
+  text-transform: uppercase;
+  font-weight: $font-weight-bold;
 }
 
 h2.title {
-    font-size: var(--text-title-size);
-    color: var(--text-value-color);
-    font-weight: 700;
-    text-transform: uppercase;
+  font-size: $text-title-size;
+  color: $text-header-color;
+  font-weight: $font-weight-bold;
 }
 
 h3.subtitle {
-    font-size: var(--text-subtitle-size);
-    color: var(--text-value-color);
-    font-weight: 700;
+  font-size: $text-subtitle-size;
+  color: $text-value-color;
+  font-weight: $font-weight-light;
 }
 </style>
