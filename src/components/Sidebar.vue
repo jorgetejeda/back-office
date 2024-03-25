@@ -1,35 +1,39 @@
 <template>
     <aside :class="`${!props.is_expanded ? 'is-expanded' : ''}`">
-        <div class="logo">
+        <div class="logo my-1 text-center">
             <img :src="logoURL" alt="Vue" />
         </div>
 
-        <Text class="bold uppercase" text="Menu"/>
+        <div class="hide-on-expand  mb-1">
+            <Text class="bold uppercase" text="Tablero" />
+            <div class="divider" />
+        </div>
+
         <div class="menu">
             <router-link to="/" class="button">
                 <Icon icon="dashboard" />
                 <span class="text">Tablero</span>
             </router-link>
             <router-link to="/about" class="button">
-                <Icon icon="description" />
-                <span class="text">About</span>
+                <Icon icon="sell" />
+                <span class="text">Ventas</span>
             </router-link>
             <router-link to="/team" class="button">
-                <Icon icon="group" />
-                <span class="text">Team</span>
+                <Icon icon="chat_bubble" />
+                <span class="text">Reseñas</span>
             </router-link>
             <router-link to="/contact" class="button">
-                <Icon icon="email" />
-                <span class="text">Contact</span>
+                <Icon icon="person" />
+                <span class="text">Perfil</span>
             </router-link>
         </div>
 
-        <div class="flex"></div>
+        <div class="flex-grow"></div>
 
         <div class="menu">
-            <router-link to="/settings" class="button">
+            <router-link to="/" class="button">
                 <span class="material-icons">settings</span>
-                <span class="text">Settings</span>
+                <span class="text">Cerrar sesión</span>
             </router-link>
         </div>
     </aside>
@@ -61,9 +65,9 @@ aside {
 
     transition: 0.2s ease-in-out;
 
-    .flex {
+    /* .flex {
         flex: 1 1 0%;
-    }
+    } */
 
     .logo {
         margin-bottom: 1rem;
@@ -126,8 +130,16 @@ aside {
         }
     }
 
+    .hide-on-expand {
+        opacity: 0;
+    }
+
     &.is-expanded {
         width: 250px;
+
+        .hide-on-expand {
+            opacity: 1;
+        }
 
         .menu {
             padding: 0 1rem;
@@ -160,6 +172,7 @@ aside {
     @media (max-width: 1024px) {
         position: absolute;
         z-index: 99;
+
     }
 }
 </style>
