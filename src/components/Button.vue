@@ -45,7 +45,7 @@ const { text, disabled, onClick, loading, variant, type, component, to, customCl
     cursor: pointer;
 
     &:hover {
-        color: $primary-color-light;
+        color: $primary-color-lighten;
     }
 }
 
@@ -62,8 +62,8 @@ const { text, disabled, onClick, loading, variant, type, component, to, customCl
         color: $primary-color;
 
         &:hover {
-            background-color: $primary-color-dark;
-            border-color: $primary-color-dark;
+            background-color: $primay-color-darken;
+            border-color: $primay-color-darken;
             color: $white;
         }
     }
@@ -73,7 +73,7 @@ const { text, disabled, onClick, loading, variant, type, component, to, customCl
         color: $white;
 
         &:hover {
-            background-color: $primary-color-dark;
+            background-color: $primay-color-darken;
         }
     }
 
@@ -81,7 +81,7 @@ const { text, disabled, onClick, loading, variant, type, component, to, customCl
         color: $primary-color;
 
         &:hover {
-            background-color: $primary-color-light;
+            background-color: $primary-color-lighten;
         }
     }
 
@@ -89,7 +89,7 @@ const { text, disabled, onClick, loading, variant, type, component, to, customCl
         padding: 0.5rem;
 
         &:hover {
-            color: $primary-color-light;
+            color: $primary-color-lighten;
         }
     }
 }

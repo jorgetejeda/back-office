@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/Authentication/LoginView.vue'
+import DashboardVue from '@/layouts/Dashboard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,20 +21,14 @@ const router = createRouter({
       component: () => import('@/views/Authentication/ForgotpasswordView.vue')
     },
     {
-      path: '/dashboard',
-      component: () => import('@/layouts/Dashboard.vue'),
-      children: [
-        {
-          path: '/home',
-          name: 'home',
-          component: () => import('@/views/Dashboard/HomeView.vue')
-        },
-        {
-          path: '/about',
-          name: 'about',
-          component: () => import('@/views/Dashboard/AboutView.vue')
-        }
-      ]
+      path: '/home',
+      name: 'home',
+      component: () => import('@/views/Dashboard/HomeView.vue')
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('@/views/Dashboard/AboutView.vue')
     }
   ]
 })

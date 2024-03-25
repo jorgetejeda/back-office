@@ -24,6 +24,9 @@
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
+// @services
+import { axiosService, handleResponse, type ServerResponse } from '@/utilities/axios-services';
+
 // @components
 import Authentication from '@/layouts/Authentication.vue';
 import Button from '@/components/Button.vue';
@@ -65,13 +68,14 @@ const onSubmit = async () => {
     // rememberMe.value && rememberMeOnLocal();
     loading.value = true;
     try {
-        // const data = await axiosService.post("/login", form);
-        // const response = handleResponse<ServerResponse>(data);
-        // if (response.success) {
-        router.push('/dashboard');
-        // }
+        const data = await axiosService.post("/login", form);
+        const response = handleResponse<ServerResponse>(data);
+        if (response.success) {
+            router.push('/home');
+        }
         console.log('Formulario enviado', form);
     } catch (error) {
+        console.log('Error', error);
         // popupAlert.show = true;
         // popupAlert.color = 'error';
         // popupAlert.message = error.message;

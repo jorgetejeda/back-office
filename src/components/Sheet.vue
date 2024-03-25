@@ -1,7 +1,6 @@
 <template>
-    <div class="sheet border rounded" :style="{
+    <div class="sheet border rounded w-100" :style="{
         'max-width': maxWidth ? maxWidth + 'px' : '100%',
-        'width': '100%'
     }">
         <Header v-if="title" variant="title" :title="title" />
         <Header v-if="subtitle" variant="subtitle" :title="subtitle" />
@@ -30,7 +29,7 @@ const { title, subtitle } = defineProps({
     display: block;
     overflow: hidden;
     overflow-wrap: break-word;
-    padding: 3rem;
+    padding: 1.5rem;
     background: $white;
     color: $text-color;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);

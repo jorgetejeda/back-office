@@ -10,8 +10,8 @@
         </form>
 
         <div class="mt-3 d-flex gap-2">
-            <Text variant="caption" text="¿Aún no tienes una cuenta?" />
-            <Button component="link" to="/register" text="Regístrate" variant="text" />
+            <Text variant="caption" text="¿Ya tienes una cuenta?" />
+            <Button component="link" to="/" text="Inicia sesión" variant="text" />
         </div>
     </Authentication>
 </template>

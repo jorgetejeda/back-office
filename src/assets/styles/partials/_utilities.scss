@@ -32,6 +32,12 @@
   }
 }
 
+@each $value in left, center, right, justify {
+  .text-#{$value} {
+    text-align: $value;
+  }
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -46,10 +52,6 @@
 
 .bold-light {
   font-weight: $font-weight-light;
-}
-
-.flex-grow {
-  flex-grow: 1;
 }
 
 .w-100 {
@@ -81,6 +83,14 @@ div.divider {
 // FLEXBOX UTILITIES
 .d-flex {
   display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 @each $value in flex-start, flex-end, center, baseline, stretch {

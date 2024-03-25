@@ -1,17 +1,22 @@
 <template>
-  <p v-if="variant === 'body'">{{ text }}</p>
-  <small v-else :class="`${variant} ${customClass}`">{{ text }}</small>
+  <p v-if="variant === 'body'" :class="color">{{ text }}</p>
+  <small v-else :class="[variant, customClass, color]">{{ text }}</small>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
+
+// @types
+import { Colors } from '@/types';
+
 interface Text {
   text: string;
   variant: 'body' | 'small' | 'caption';
+  color: Colors;
   customClass?: string;
 }
 
-const { text, variant, customClass } = defineProps<Text>();
+const { text, variant, customClass, color = '' } = defineProps<Text>();
 
 </script>
 

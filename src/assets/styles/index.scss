@@ -1,9 +1,13 @@
+@use 'sass:color';
 @import 'partials/colors';
 @import 'partials/variables';
 @import 'partials/typography';
 @import 'partials/borders';
 
 @import 'partials/utilities';
+
+$primary-color-lighten: lighten($primary-color, 10%);
+$primay-color-darken: darken($primary-color, 5%);
 
 * {
   margin: 0;

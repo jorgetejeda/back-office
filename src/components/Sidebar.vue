@@ -44,15 +44,14 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
+@use 'sass:color';
 @import 'src/assets/styles/index';
 
 aside {
     display: flex;
     flex-direction: column;
-
     background-color: $primary-color;
     color: $white;
-
     width: calc(2rem + 32px);
     overflow: hidden;
     min-height: 100vh;
@@ -100,11 +99,11 @@ aside {
             }
 
             &:hover {
-                background-color: $primary-color-light;
+                background-color: lighten($primary-color, 10%);
             }
 
             &.router-link-exact-active {
-                background-color: $primary-color-light;
+                background-color: lighten($primary-color, 10%);
                 border-right: 5px solid red;
                 border-radius: 0rem;
 

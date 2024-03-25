@@ -7,10 +7,41 @@ $body-color: #f6f6f6;
 
 // Primary Colors
 $primary-color: #002d72;
-$primary-color-dark: #001f4c;
-$primary-color-light: #004d8e;
-
-// Indicators colors
 $success-color: #41c19f;
 $warning-color: #ffc559;
 $danger-color: #ef2b49;
+
+// light
+$fade-primary-color: #8fa4bf;
+$fade-success-color: #9fd6cc;
+$fade-warning-color: #ffe6b7;
+$fade-danger-color: #f7a3b1;
+
+$styles: (
+  primary: (
+    className: 'primary',
+    color: $primary-color,
+    background: $fade-primary-color
+  ),
+  success: (
+    className: 'success',
+    color: $success-color,
+    background: $fade-success-color
+  ),
+  warning: (
+    className: 'warning',
+    color: $warning-color,
+    background: $fade-warning-color
+  ),
+  danger: (
+    className: 'danger',
+    color: $danger-color,
+    background: $fade-danger-color
+  )
+);
+@each $style in map-keys($styles) {
+  .#{$style} {
+    background-color: map-get(map-get($styles, $style), 'background');
+    color: map-get(map-get($styles, $style), 'color');
+  }
+}

@@ -1,16 +1,20 @@
 <template>
   <header>
-    <component :is="headerMap[variant]" :class="variant">{{ title }}</component>
+    <component :is="headerMap[variant]" :class="[color, variant]">{{ title }}</component>
   </header>
 </template>
 
 <script setup lang="ts">
+// @types
+import { Colors } from '@/types';
+
 interface HeaderProps {
   title: string;
   variant: 'header' | 'title' | 'subtitle';
+  color?: Colors
 }
 
-const { title, variant } = defineProps<HeaderProps>();
+const { title, variant, color = '' } = defineProps<HeaderProps>();
 
 const headerMap: Record<string, string> = {
   header: 'h1',
