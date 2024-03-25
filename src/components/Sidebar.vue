@@ -4,11 +4,11 @@
             <img :src="logoURL" alt="Vue" />
         </div>
 
-        <p class="bold uppercase">Menu</p>
+        <Text class="bold uppercase" text="Menu"/>
         <div class="menu">
             <router-link to="/" class="button">
-                <Icon icon="home" />
-                <span class="text">Home</span>
+                <Icon icon="dashboard" />
+                <span class="text">Tablero</span>
             </router-link>
             <router-link to="/about" class="button">
                 <Icon icon="description" />
@@ -36,7 +36,9 @@
 </template>
 
 <script setup>
+//@compoent
 import Icon from './Icon.vue';
+import Text from './Text.vue';
 
 const props = defineProps({
     is_expanded: Boolean,

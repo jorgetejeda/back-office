@@ -27,3 +27,61 @@ button {
   outline: none;
   background: none;
 }
+
+h1,
+h2,
+h3 {
+  line-height: 1.3;
+}
+
+h1.header {
+  font-size: $text-header-size;
+  color: $text-header-color;
+  text-transform: uppercase;
+  font-weight: $font-weight-bold;
+}
+
+h2.title {
+  font-size: $text-title-size;
+  color: $text-header-color;
+  font-weight: $font-weight-bold;
+}
+
+h3.subtitle {
+  font-size: $text-subtitle-size;
+  color: $text-value-color;
+  font-weight: $font-weight-light;
+}
+
+
+$styles: (
+  primary: (
+    className: 'primary',
+    color: $primary-color,
+    background: $fade-primary-color
+  ),
+  success: (
+    className: 'success',
+    color: $success-color,
+    background: $fade-success-color
+  ),
+  warning: (
+    className: 'warning',
+    color: $warning-color,
+    background: $fade-warning-color
+  ),
+  danger: (
+    className: 'danger',
+    color: $danger-color,
+    background: $fade-danger-color
+  )
+);
+@each $style in map-keys($styles) {
+  .fade-#{$style} {
+    background-color: map-get(map-get($styles, $style), 'background') !important;
+    color: map-get(map-get($styles, $style), 'color') !important;
+  }
+  .font-#{$style} {
+    color: map-get(map-get($styles, $style), 'color') !important;
+  }
+}

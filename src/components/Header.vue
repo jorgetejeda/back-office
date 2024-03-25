@@ -1,6 +1,6 @@
 <template>
   <header>
-    <component :is="headerMap[variant]" :class="[color, variant]">{{ title }}</component>
+    <component :is="headerMap[variant]" :class="[variant, concatClassName(color), customClass]">{{ title }}</component>
   </header>
 </template>
 
@@ -11,43 +11,19 @@ import { Colors } from '@/types';
 interface HeaderProps {
   title: string;
   variant: 'header' | 'title' | 'subtitle';
-  color?: Colors
+  color?: Colors;
+  customClass?: string;
 }
 
-const { title, variant, color = '' } = defineProps<HeaderProps>();
+const { title, variant, color = '', customClass } = defineProps<HeaderProps>();
 
 const headerMap: Record<string, string> = {
   header: 'h1',
   title: 'h2',
   subtitle: 'h3',
 };
+
+const concatClassName = (color: string) => {
+  return `font-${color}`;
+}
 </script>
-
-<style lang="scss" scoped>
-@import 'src/assets/styles/index';
-
-h1,
-h2,
-h3 {
-  line-height: 1.3;
-}
-
-h1.header {
-  font-size: $text-header-size;
-  color: $text-header-color;
-  text-transform: uppercase;
-  font-weight: $font-weight-bold;
-}
-
-h2.title {
-  font-size: $text-title-size;
-  color: $text-header-color;
-  font-weight: $font-weight-bold;
-}
-
-h3.subtitle {
-  font-size: $text-subtitle-size;
-  color: $text-value-color;
-  font-weight: $font-weight-light;
-}
-</style>

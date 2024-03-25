@@ -43,15 +43,15 @@
 }
 
 .bold {
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-bold !important;
 }
 
 .bold-regular {
-  font-weight: $font-weight-regular;
+  font-weight: $font-weight-regular !important;
 }
 
 .bold-light {
-  font-weight: $font-weight-light;
+  font-weight: $font-weight-light !important;
 }
 
 .w-100 {
