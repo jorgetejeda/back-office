@@ -1,11 +1,18 @@
 <template>
-    <button :type="type" class="btn rounded" :class="variant" :disabled="disabled || loading" @click="onClick">
+    <button v-if="component === 'button'" :type="type" class="btn rounded" :class="`${variant} ${customClass}`"
+        :disabled="disabled || loading" @click="onClick">
         <Icon v-if="variant === 'icon' && icon" :icon="icon" />
         <template v-if="text">{{ text }}</template>
     </button>
+
+    <a v-if="component === 'link'" :href="to" class="btn-link">
+        <Icon v-if="variant === 'icon' && icon" :icon="icon" />
+        <Text variant="caption" v-if="text" :text="text" :customClass="customClass" />
+    </a>
 </template>
 <script setup lang="ts">
 import Icon from '@/components/Icon.vue';
+import Text from '@/components/Text.vue';
 
 interface ButtonProps {
     text?: string;
@@ -13,15 +20,34 @@ interface ButtonProps {
     onClick?: () => void;
     loading?: boolean;
     variant: 'outlined' | 'primary' | 'text' | 'icon';
+    component?: 'button' | 'link'
     icon?: string;
     type?: 'button' | 'submit' | 'reset';
+    to?: string;
+    customClass?: string;
 }
 
-const { text, disabled = false, onClick, loading = false, variant = "primary", type = "button" } = defineProps<ButtonProps>();
+const { text, disabled, onClick, loading, variant, type, component, to, customClass } = withDefaults(defineProps<ButtonProps>(), {
+    type: 'button',
+    variant: 'primary',
+    component: 'button',
+    customClass: '',
+    to: ''
+});
 </script>
 
 <style lang="scss" scoped>
 @import 'src/assets/styles/index';
+
+.btn-link {
+    text-decoration: none;
+    color: $primary-color;
+    cursor: pointer;
+
+    &:hover {
+        color: $primary-color-light;
+    }
+}
 
 .btn {
     padding: 0.5rem 1rem;

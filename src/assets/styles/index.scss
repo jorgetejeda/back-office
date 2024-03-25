@@ -4,3 +4,22 @@
 @import 'partials/borders';
 
 @import 'partials/utilities';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $body-color;
+  font-family: $font-family;
+}
+
+button {
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}

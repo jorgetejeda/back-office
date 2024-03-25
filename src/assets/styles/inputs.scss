@@ -1,50 +1,65 @@
 .input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  font-family: $font-family;
+
+  .label {
+    font-size: 1rem;
+    color: $text-info-color;
+    margin-bottom: 0.5rem;
+
+    &.error {
+      color: $danger-color;
+    }
+  }
+
+  .input-group {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    font-family: $font-family;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    transition: 0.2s ease-out;
 
-    .label {
-        font-size: 1rem;
-        color: $text-info-color;
-        margin-bottom: 0.5rem;
+    &.error {
+      border-color: $danger-color;
     }
 
-    .input-group {
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid $border-color;
-        transition: 0.2s ease-out;
+    .input-field {
+      padding: 0.5rem 0;
+      border: none;
+      font-size: 1rem;
+      flex: 1;
+      outline: none;
+      background-color: transparent;
+      font-weight: 400;
+      font-family: $font-family;
 
-        .input-field {
-            padding: 0.5rem 0;
-            border: none;
-            font-size: 1rem;
-            flex: 1;
-            outline: none;
-            background-color: transparent;
-            font-weight: 400;
-            font-family: $font-family;
+      &::placeholder {
+        color: lightgray;
+      }
 
-            &::placeholder {
-                color: lightgray;
-            }
-
-            &:focus {
-                border-color: $primary-color;
-            }
-        }
-
-        .inner-icon {
-            color: $text-value-color;
-            transition: 0.2s ease-out;
-            margin-left: 0.5rem;
-        }
+      &:focus {
+        border-color: $primary-color;
+      }
     }
 
-    .error-message {
+    .inner-icon {
+      color: $text-value-color;
+      transition: 0.2s ease-out;
+      margin-left: 0.5rem;
+      &.error {
         color: $danger-color;
-        font-size: 0.8rem;
-        padding-top: 8px;
+      }
     }
+  }
+  .hint {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 32px;
+    .error-message {
+      color: $danger-color;
+      font-size: 0.8rem;
+    }
+  }
 }

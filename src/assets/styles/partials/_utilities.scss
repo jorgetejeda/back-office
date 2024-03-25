@@ -17,6 +17,10 @@
     margin-bottom: #{$i}rem;
   }
 
+  .pa-#{$i} {
+    padding: #{$i}rem;
+  }
+
   .px-#{$i} {
     padding-left: #{$i}rem;
     padding-right: #{$i}rem;
@@ -36,11 +40,11 @@
   font-weight: $font-weight-bold;
 }
 
-.regular {
+.bold-regular {
   font-weight: $font-weight-regular;
 }
 
-.light {
+.bold-light {
   font-weight: $font-weight-light;
 }
 
@@ -72,4 +76,27 @@ div.border {
 div.divider {
   border-top: 1px solid $border-color;
   margin: 2rem 0;
+}
+
+// FLEXBOX UTILITIES
+.d-flex {
+  display: flex;
+}
+
+@each $value in flex-start, flex-end, center, baseline, stretch {
+  .align-items-#{$value} {
+    align-items: $value;
+  }
+}
+
+@each $value in flex-start, flex-end, center, space-between, space-around {
+  .justify-content-#{$value} {
+    justify-content: $value;
+  }
+}
+
+@for $i from 0 through 8 {
+  .gap-#{$i} {
+    gap: #{$i * 2}px;
+  }
 }

@@ -1,34 +1,43 @@
 <template>
     <div class="input">
         <label class="label" :for="label" v-if="label">{{ label }}</label>
-        <div class="input-group">
+        <div class="input-group" :class="{ 'error': showError }">
             <input class="input-field" v-model="inputValue" :type="inputType" :placeholder="placeholder"
                 @input="handleInput" @blur="handleBlur" @focus="handleFocus" :required="isRequired" />
-            <Icon :icon="togglePasswordIcon" class="inner-icon" @click="toggleVisibility" />
+            <Icon :icon="togglePasswordIcon" class="inner-icon" :class="{ 'error': showError }"
+                @click="toggleVisibility" />
         </div>
-        <Text variant="caption" v-if="error && showError" class="error-message" :text="error" />
+        <div class="hint">
+            <Text variant="caption" class="error-message" :text="showError ? 'Este campo es requerido' : ''" />
+            <Button v-if="forgotPassword" component="link" text="¿Olvidaste tu contraseña?" variant="text"
+                :to="forgotPasswordLink" />
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+
 // @components
 import Text from '@/components/Text.vue';
 import Icon from '@/components/Icon.vue';
+import Button from '../Button.vue';
 
 interface InputProps {
     label?: string;
     placeholder: string;
     isRequired: boolean;
-    error: string;
+    forgotPassword?: boolean;
+    forgotPasswordLink?: string;
 }
 
-const { label, placeholder, isRequired, error } = defineProps<InputProps>();
+const { label, placeholder, isRequired, forgotPassword, forgotPasswordLink } = defineProps<InputProps>();
 
 const emit = defineEmits(['update:modelValue', 'focus', 'blur']);
 
 const inputValue = ref('');
 const inputType = ref('password');
+const blur = ref(false);
 
 const handleInput = (event: Event) => {
     inputValue.value = (event.target as HTMLInputElement).value;
@@ -37,7 +46,7 @@ const handleInput = (event: Event) => {
 
 const handleBlur = (event: FocusEvent) => {
     emit('blur', event);
-    validateInput()
+    blur.value = true;
 };
 
 const handleFocus = (event: FocusEvent) => {
@@ -53,7 +62,7 @@ const togglePasswordIcon = computed(() => {
 });
 
 const showError = computed(() => {
-    return isRequired && !inputValue.value;
+    return blur.value && isRequired && !inputValue.value;
 });
 
 const validateInput = () => {

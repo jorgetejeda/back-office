@@ -16,5 +16,4 @@ const is_expanded = ref(false);
 const handleSidebar = (isExpanded: boolean) => {
     is_expanded.value = isExpanded;
 };
-
 </script>

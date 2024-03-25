@@ -2,9 +2,8 @@
     <div class="checkbox">
         <label :for="id">
             <input type="checkbox" :id="id" v-model="isChecked" @change="handleChange" />
-            <span>{{ label }}</span>
+            <Text variant="caption" :text="label" />
         </label>
-        <Text variant="caption" v-if="error && showError" class="error-message" :text="error" />
     </div>
 </template>
 
@@ -16,10 +15,9 @@ interface CheckboxProps {
     id: string;
     label: string;
     isRequired: boolean;
-    error: string;
 }
 
-const { id, label, isRequired, error } = defineProps<CheckboxProps>();
+const { id, label, isRequired } = defineProps<CheckboxProps>();
 
 const emit = defineEmits(['update:modelValue', 'change']);
 
@@ -50,11 +48,9 @@ const showError = computed(() => {
 
         input {
             margin-right: 8px;
+            margin-top: 2px;
         }
     }
 
-    .error-message {
-        margin-top: 4px;
-    }
 }
 </style>

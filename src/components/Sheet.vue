@@ -1,5 +1,8 @@
 <template>
-    <div class="sheet border rounded" :style="{ 'max-width': maxWidth ? maxWidth + 'px' : '100%' }">
+    <div class="sheet border rounded" :style="{
+        'max-width': maxWidth ? maxWidth + 'px' : '100%',
+        'width': '100%'
+    }">
         <Header v-if="title" variant="title" :title="title" />
         <Header v-if="subtitle" variant="subtitle" :title="subtitle" />
         <div v-if="title || subtitle" class="border bottom"></div>

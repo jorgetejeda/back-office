@@ -1,6 +1,6 @@
 <template>
   <p v-if="variant === 'body'">{{ text }}</p>
-  <small v-else :class="variant">{{ text }}</small>
+  <small v-else :class="`${variant} ${customClass}`">{{ text }}</small>
 </template>
 
 <script setup lang="ts">
@@ -8,13 +8,15 @@ import { defineProps } from 'vue';
 interface Text {
   text: string;
   variant: 'body' | 'small' | 'caption';
+  customClass?: string;
 }
 
-const { text, variant } = defineProps<Text>();
+const { text, variant, customClass } = defineProps<Text>();
 
 </script>
 
 <style lang="scss">
+@import 'src/assets/styles/index';
 $text-body-size: var(--text-body-size);
 $text-small-size: var(--text-small-size);
 $text-caption-size: var(--text-caption-size);

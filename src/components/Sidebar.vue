@@ -44,11 +44,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-$primary-color: var(--primary-color);
-$primary-color-dark: var(--primary-color-dark);
-$primary-color-light: var(--primary-color-light);
-$white: var(--white);
-$sidebar-width: var(--sidebar-width);
+@import 'src/assets/styles/index';
 
 aside {
     display: flex;
@@ -130,7 +126,7 @@ aside {
     }
 
     &.is-expanded {
-        width: $sidebar-width;
+        width: 250px;
 
         .menu {
             padding: 0 1rem;

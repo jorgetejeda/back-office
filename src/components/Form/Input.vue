@@ -1,17 +1,20 @@
 <template>
     <div class="input">
-        <label class="label" :for="label" v-if="label">{{ label }}</label>
-        <div class="input-group">
+        <label class="label" :class="{ 'error': showError }" :for="label" v-if="label">{{ label }}</label>
+        <div class="input-group" :class="{ 'error': showError }">
             <input class="input-field" v-model="inputValue" :type="inputType" :placeholder="placeholder"
-                @input="handleInput" @blur="handleBlur" @focus="handleFocus" :required="isRequired" />
-            <Icon v-if="appendInnerIcon" :icon="appendInnerIcon" class="inner-icon" />
+                @input="handleInput" @blur="handleBlur" @focus="handleFocus" :required="isRequired"
+                :class="{ 'error': showError }" />
+            <Icon v-if="appendInnerIcon" :icon="appendInnerIcon" class="inner-icon" :class="{ 'error': showError }" />
         </div>
-        <Text variant="caption" v-if="error" class="error-message" :text="error" />
+        <div class="hint">
+            <Text variant="caption" v-show="showError" class="error-message" text="Este campo es requerido" />
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 // @components
 import Text from '@/components/Text.vue';
 import Icon from '@/components/Icon.vue';
@@ -19,18 +22,18 @@ import Icon from '@/components/Icon.vue';
 interface InputProps {
     label?: string;
     placeholder: string;
-    type?: 'text' | 'number';
+    type?: 'text' | 'number' | 'email';
     isRequired: boolean;
-    error: string;
     appendInnerIcon?: string;
 }
 
-const { type = 'text', label, placeholder, isRequired, error, appendInnerIcon } = defineProps<InputProps>();
+const { type = 'text', label, placeholder, isRequired = false, appendInnerIcon } = defineProps<InputProps>();
 
 const emit = defineEmits(['update:modelValue', 'focus', 'blur']);
 
 const inputValue = ref('');
 const inputType = ref(type);
+const blur = ref(false);
 
 const handleInput = (event: Event) => {
     inputValue.value = (event.target as HTMLInputElement).value;
@@ -39,11 +42,16 @@ const handleInput = (event: Event) => {
 
 const handleBlur = (event: FocusEvent) => {
     emit('blur', event);
+    blur.value = true;
 };
 
 const handleFocus = (event: FocusEvent) => {
     emit('focus', event);
 };
+
+const showError = computed(() => {
+    return blur.value && isRequired && !inputValue.value;
+});
 
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="avatar rounded">
+    <div class="avatar">
         <img :src="image" alt="avatar" />
     </div>
 </template>
@@ -15,7 +15,7 @@ const { image } = withDefaults(
 </script>
 
 <style lang="scss">
-$primary-color: var(--primary-color);
+@import 'src/assets/styles/index';
 
 .avatar {
     margin: 0.5rem 1rem;

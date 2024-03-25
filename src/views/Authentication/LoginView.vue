@@ -1,18 +1,22 @@
 <template>
     <Authentication title="Bienvenido a Back Office"
         subtitle="Por favor, ingrese su usuario y contraseña para iniciar sesión">
+        <Debug :data="form" />
         <form @submit.prevent="onSubmit" class="mt-3">
             <Input v-model="form.usernameOrEmail" @blur="validateField('usernameOrEmail')" type="text"
-                :isRequired="true" placeholder="Enter your username or email"
-                :error="(required(form.usernameOrEmail) ? 'Este campo es requerido' : '').toString()"
-                appendInnerIcon="email" />
+                :isRequired="true" placeholder="Ingrese su usuario o correo" appendInnerIcon="email" />
             <Password v-model="form.password" @blur="validateField('password')" :isRequired="true"
-                placeholder="Enter your username or email"
-                :error="(required(form.password) ? 'Este campo es requerido' : '').toString()" />
-            <Checkbox v-model="rememberMe" id="rememberMe" label="Recordarme" :isRequired="true"
-                :error="(required(rememberMe.toString()) ? 'Este campo es requerido' : '')" />
-            <Button type="submit" text="Iniciar Sesión" variant="primary" :loading="loading" class="w-100 mt-3" />
+                placeholder="Ingrese su contraseña" :forgotPassword="true" forgotPasswordLink="/forgot-password" />
+            <Checkbox v-model="rememberMe" id="rememberMe" label="Recordarme mi contraseña" :isRequired="true"
+                :error="''" />
+            <Button component="button" type="submit" text="Iniciar Sesión" variant="primary" :loading="loading"
+                customClass="w-100 mt-3" />
         </form>
+
+        <div class="mt-3 d-flex gap-2">
+            <Text variant="caption" text="¿Aún no tienes una cuenta?" />
+            <Button component="link" to="/register" text="Regístrate" variant="text" />
+        </div>
     </Authentication>
 </template>
 
@@ -23,11 +27,12 @@ import { useRouter } from 'vue-router';
 // @components
 import Authentication from '@/layouts/Authentication.vue';
 import Button from '@/components/Button.vue';
+import Text from '@/components/Text.vue';
 import Input from '@/components/Form/Input.vue';
 import Password from '@/components/Form/Password.vue';
 import Checkbox from '@/components/Form/Checkbox.vue';
+import Debug from '@/components/Debug.vue';
 
-// @interfaces
 interface Form {
     usernameOrEmail: string;
     password: string;
@@ -51,8 +56,6 @@ const validateField = (fieldName: keyof Form) => {
     }
 };
 
-// 
-
 const onSubmit = async () => {
     const isValid = Object.values(form).every(x => !!x);
     if (!isValid) {
@@ -65,7 +68,7 @@ const onSubmit = async () => {
         // const data = await axiosService.post("/login", form);
         // const response = handleResponse<ServerResponse>(data);
         // if (response.success) {
-        //     router.push('/dashboard');
+        router.push('/dashboard');
         // }
         console.log('Formulario enviado', form);
     } catch (error) {

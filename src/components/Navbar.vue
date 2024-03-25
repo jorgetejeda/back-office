@@ -20,7 +20,6 @@ import { ref } from 'vue';
 import Button from '@/components/Button.vue';
 import Avatar from '@/components/Avatar.vue';
 
-
 const is_expanded = ref(true);
 const emit = defineEmits(['toogleSidebar'])
 
@@ -32,6 +31,8 @@ const handleToogleSidebar = () => {
 </script>
 
 <style lang="scss" scoped>
+@import 'src/assets/styles/index';
+
 header.navbar {
     display: flex;
 }
