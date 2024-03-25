@@ -1,7 +1,7 @@
 <template>
     <aside :class="`${!props.is_expanded ? 'is-expanded' : ''}`">
         <div class="logo my-1 text-center">
-            <img :src="logoURL" alt="Vue" />
+            <img src="https://picsum.photos/200/" alt="Vue" />
         </div>
 
         <div class="hide-on-expand  mb-1">

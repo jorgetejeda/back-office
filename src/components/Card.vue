@@ -1,5 +1,5 @@
 <template>
-    <div class="card-contaner d-flex gap-8 my-1">
+    <div class="card-contaner d-flex gap-8 my-1 flex-wrap">
         <div v-for="item in items" :key="item.title"
             :class="['card flex-1 pa-1 text-center rounded', concatClassName(item.color)]">
             <Icon :icon="item.icon" size="large"/>
